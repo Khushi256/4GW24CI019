@@ -1,0 +1,142 @@
+
+## **1. Setting Up and Basic Commands**
+
+```bash
+git init
+```
+
+```bash
+touch file.txt
+```
+
+```bash
+git add file.txt
+```
+
+```bash
+git commit -m "Initial commit with file.txt"
+```
+
+---
+
+## **2. Creating and Managing Branches**
+
+```bash
+git branch feature-branch
+```
+
+```bash
+git checkout master
+```
+
+```bash
+git merge feature-branch
+```
+
+---
+
+## **3. Creating and Managing Branches (Stashing Changes)**
+
+```bash
+git stash
+```
+
+```bash
+git checkout feature-branch
+```
+
+```bash
+git stash apply
+```
+
+---
+
+## **4. Collaboration and Remote Repositories (Cloning a Repository)**
+
+```bash
+git clone <remote-repository-URL>
+```
+
+📌 *Example:*
+
+```bash
+git clone https://github.com/user/repository.git
+```
+
+---
+
+## **5. Collaboration and Remote Repositories (Fetch and Rebase)**
+
+```bash
+git fetch origin
+```
+
+```bash
+git rebase origin/master
+```
+
+---
+
+## **6. Collaboration and Remote Repositories (Merge with Custom Message)**
+
+```bash
+git merge feature-branch -m "Merged feature-branch into master"
+```
+
+---
+
+## **7. Git Tags and Releases**
+
+```bash
+git tag v1.0
+```
+
+---
+
+## **8. Advanced Git Operations (Cherry-pick Range of Commits)**
+
+```bash
+git cherry-pick commit1^..commit5
+```
+
+📌 *Replace `commit1` and `commit5` with actual commit IDs.*
+
+---
+
+## **9. Analysing and Changing Git History (View Specific Commit Details)**
+
+```bash
+git show <commit-id>
+```
+
+📌 *Example:*
+
+```bash
+git show abc123
+```
+
+---
+
+## **10. Analysing and Changing Git History (Commits by Author in Date Range)**
+
+```bash
+git log --author="JohnDoe" --since="2023-01-01" --until="2023-12-31"
+```
+
+---
+
+## **11. Analysing and Changing Git History (Last Five Commits)**
+
+```bash
+git log -5
+```
+
+---
+
+## **12. Analysing and Changing Git History (Undo a Specific Commit)**
+
+```bash
+git revert abc123
+```
+
+---
