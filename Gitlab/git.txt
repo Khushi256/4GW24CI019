@@ -1,142 +1,100 @@
+EXPERIMENT 1: Setting Up and Basic Git Commands
 
-## **1. Setting Up and Basic Commands**
+    Commands used:
 
-```bash
-git init
-```
+    git init
 
-```bash
-touch file.txt
-```
+    git add .
 
-```bash
-git add file.txt
-```
+    git commit -m "initial commit"
 
-```bash
-git commit -m "Initial commit with file.txt"
-```
+EXPERIMENT 2: Creating and Managing Branches
 
----
+    Commands used:
 
-## **2. Creating and Managing Branches**
+    git checkout -b main
 
-```bash
-git branch feature-branch
-```
+    git checkout master
 
-```bash
-git checkout master
-```
+    git merge main
 
-```bash
-git merge feature-branch
-```
+EXPERIMENT 3: Stashing Changes
 
----
+    Commands used:
 
-## **3. Creating and Managing Branches (Stashing Changes)**
+    git stash save "stashed"
 
-```bash
-git stash
-```
+    git checkout main
 
-```bash
-git checkout feature-branch
-```
+    git stash apply
 
-```bash
-git stash apply
-```
+EXPERIMENT 4: Working with Remote Repositories (Clone & Remote Setup)
 
----
+    Commands used:
 
-## **4. Collaboration and Remote Repositories (Cloning a Repository)**
+    git remote add origin https://github.com/Khushi256/new.git
 
-```bash
-git clone <remote-repository-URL>
-```
+    git fetch origin
 
-📌 *Example:*
+EXPERIMENT 5: Fetching and Rebasing from Remote Repository
 
-```bash
-git clone https://github.com/user/repository.git
-```
+    Commands used:
 
----
+    git fetch origin
 
-## **5. Collaboration and Remote Repositories (Fetch and Rebase)**
+    git rebase origin/main
 
-```bash
-git fetch origin
-```
+EXPERIMENT 6: Merging with Custom Commit Message
 
-```bash
-git rebase origin/master
-```
+    Commands used:
 
----
+    git checkout master
 
-## **6. Collaboration and Remote Repositories (Merge with Custom Message)**
+    git merge main
 
-```bash
-git merge feature-branch -m "Merged feature-branch into master"
-```
 
----
+EXPERIMENT 7: Git Tags and Releases
 
-## **7. Git Tags and Releases**
+    Commands used:
 
-```bash
-git tag v1.0
-```
+    git tag v1.0
 
----
+    git log --oneline
 
-## **8. Advanced Git Operations (Cherry-pick Range of Commits)**
+EXPERIMENT 8: Cherry-Picking Commits
 
-```bash
-git cherry-pick commit1^..commit5
-```
+    Commands used:
 
-📌 *Replace `commit1` and `commit5` with actual commit IDs.*
+    git log --oneline
 
----
+    git cherry-pick aaaa677
 
-## **9. Analysing and Changing Git History (View Specific Commit Details)**
+    git cherry-pick --skip
 
-```bash
-git show <commit-id>
-```
+EXPERIMENT 9: Viewing Details of a Specific Commit
 
-📌 *Example:*
+    Commands used:
 
-```bash
-git show abc123
-```
+    git log -n 1 d54bbdf
 
----
+EXPERIMENT 10: Listing Commits by Author and Date Range
 
-## **10. Analysing and Changing Git History (Commits by Author in Date Range)**
+    Commands used:
 
-```bash
-git log --author="JohnDoe" --since="2023-01-01" --until="2023-12-31"
-```
+    git log --author="JohnDoe" --since="2023-01-01" --until="2023-12-31"
 
----
+EXPERIMENT 11: Displaying Recent Commit History
 
-## **11. Analysing and Changing Git History (Last Five Commits)**
+    Commands used:
 
-```bash
-git log -5
-```
+    git log --oneline
 
----
+    git log -n 5
 
-## **12. Analysing and Changing Git History (Undo a Specific Commit)**
+EXPERIMENT 12: Undoing a Commit (Revert Operation)
 
-```bash
-git revert abc123
-```
+    Commands used:
 
----
+    git revert 6818b20
+
+    git commit (opened automatically after revert)
