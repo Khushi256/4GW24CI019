@@ -1,27 +1,19 @@
-import java.io.*;
 import java.util.Scanner;
 
 public class EmployeeManagementSystem {
 
-    static final int MAX = 100;
+    static final int MAX = 50;
     static int count = 0;
 
-    // Arrays (DSA)
-    static String[] empId = new String[MAX];
+    // Arrays to store employee data
+    static int[] empId = new int[MAX];
     static String[] empName = new String[MAX];
     static double[] empSalary = new double[MAX];
     static String[] empDept = new String[MAX];
 
     static Scanner sc = new Scanner(System.in);
-    static final String FILE_NAME = "employees.txt";
 
     public static void main(String[] args) {
-
-        // OS: Process Management
-        System.out.println("Process ID: " + ProcessHandle.current().pid());
-
-        // OS: File System
-        loadFromFile();
 
         int choice;
 
@@ -35,7 +27,7 @@ public class EmployeeManagementSystem {
             System.out.print("Enter your choice: ");
 
             if (!sc.hasNextInt()) {
-                System.out.println("Please enter numbers only!");
+                System.out.println("Please enter a valid number!");
                 sc.next();
                 continue;
             }
@@ -49,9 +41,8 @@ public class EmployeeManagementSystem {
                 case 3: searchEmployee(); break;
                 case 4: deleteEmployee(); break;
                 case 5:
-                    saveToFile();
-                    System.out.println("Program terminated.");
-                    System.exit(0); // OS: System Call
+                    System.out.println("Program exited.");
+                    return;
                 default:
                     System.out.println("Invalid choice!");
             }
@@ -66,16 +57,13 @@ public class EmployeeManagementSystem {
         }
 
         System.out.print("Enter Employee ID: ");
-        empId[count] = sc.nextLine();
+        empId[count] = sc.nextInt();
+        sc.nextLine();
 
         System.out.print("Enter Employee Name: ");
         empName[count] = sc.nextLine();
 
         System.out.print("Enter Salary: ");
-        while (!sc.hasNextDouble()) {
-            System.out.println("Enter valid salary!");
-            sc.next();
-        }
         empSalary[count] = sc.nextDouble();
         sc.nextLine();
 
@@ -89,7 +77,7 @@ public class EmployeeManagementSystem {
     // View Employees
     static void viewEmployees() {
         if (count == 0) {
-            System.out.println("No employees available.");
+            System.out.println("No employees to display.");
             return;
         }
 
@@ -105,10 +93,10 @@ public class EmployeeManagementSystem {
     // Search Employee (Linear Search)
     static void searchEmployee() {
         System.out.print("Enter Employee ID to search: ");
-        String id = sc.nextLine();
+        int id = sc.nextInt();
 
         for (int i = 0; i < count; i++) {
-            if (empId[i].equals(id)) {
+            if (empId[i] == id) {
                 System.out.println("Employee Found:");
                 System.out.println("Name: " + empName[i]);
                 System.out.println("Salary: " + empSalary[i]);
@@ -122,10 +110,10 @@ public class EmployeeManagementSystem {
     // Delete Employee (Array Shifting)
     static void deleteEmployee() {
         System.out.print("Enter Employee ID to delete: ");
-        String id = sc.nextLine();
+        int id = sc.nextInt();
 
         for (int i = 0; i < count; i++) {
-            if (empId[i].equals(id)) {
+            if (empId[i] == id) {
                 for (int j = i; j < count - 1; j++) {
                     empId[j] = empId[j + 1];
                     empName[j] = empName[j + 1];
@@ -138,36 +126,5 @@ public class EmployeeManagementSystem {
             }
         }
         System.out.println("Employee not found!");
-    }
-
-    // OS: File Write
-    static void saveToFile() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_NAME))) {
-            for (int i = 0; i < count; i++) {
-                pw.println(empId[i] + "," + empName[i] + "," +
-                           empSalary[i] + "," + empDept[i]);
-            }
-        } catch (IOException e) {
-            System.out.println("Error saving file!");
-        }
-    }
-
-    // OS: File Read
-    static void loadFromFile() {
-        File file = new File(FILE_NAME);
-        if (!file.exists()) return;
-
-        try (Scanner fs = new Scanner(file)) {
-            while (fs.hasNextLine() && count < MAX) {
-                String[] data = fs.nextLine().split(",");
-                empId[count] = data[0];
-                empName[count] = data[1];
-                empSalary[count] = Double.parseDouble(data[2]);
-                empDept[count] = data[3];
-                count++;
-            }
-        } catch (Exception e) {
-            System.out.println("Error reading file!");
-        }
     }
 }
